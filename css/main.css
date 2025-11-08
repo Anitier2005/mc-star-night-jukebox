@@ -1,0 +1,113 @@
+/* 重置所有元素的内外边距，使用border-box盒模型 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Microsoft YaHei', sans-serif;
+}
+
+/* 引入字体 */
+@font-face {
+    font-family: 'cubic';
+    src: url('/static/font/cubic11.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'cubic', serif;
+    color: white;
+    background-color: #000;
+}
+
+/* 星空容器 */
+#container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* 方块容器 */
+.scene-wrapper {
+    position: absolute;
+    bottom: 0;
+
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    border: 0;
+}
+
+
+.bottom-bar{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: max-content;
+    margin-inside: 0.5vw;
+    margin-bottom: 0.5vw;
+}
+
+.music-name{
+    margin: 4px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.music-box-wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* 物品栏 */
+.music-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    background-color: #C6C6C6;
+    border: 2px solid;
+    border-color: #DBDBDB #5B5B5B #5B5B5B #DBDBDB;
+    padding: 2px;
+    text-align: left;
+    white-space: nowrap;
+    vertical-align: bottom;
+    width: max-content;
+
+    span{
+        position: relative;
+        display: inline-block;
+        background: #8B8B8B no-repeat center center / 32px 32px;
+        border: 2px solid;
+        border-color: #373737 #FFF #FFF #373737;
+        box-sizing: content-box;
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+        line-height: 1;
+        text-align: left;
+        vertical-align: bottom;
+
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+#music-box{
+    display: none;
+}

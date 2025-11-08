@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星空唱片机</title>
+    <link rel="icon" href="static/Jukebox_Icon.png">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/juke.css">
+</head>
+<body>
+    <div id="container"></div>
+    <!--唱片机-->
+    <div class="scene-wrapper">
+        <div class="scene">
+            <div class="cube">
+                <div class="face front"></div>
+                <div class="face back"></div>
+                <div class="face right"></div>
+                <div class="face left"></div>
+                <div class="face top"></div>
+                <div class="face bottom"></div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-bar">
+        <div class="music-name">
+            <span id="music-playing"></span>
+        </div>
+        <div class="music-box-wrapper">
+            <div class="music-box" id="music-box">
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/star-night.js"></script>
+    <script src="js/block.js"></script>
+    <script src="js/color-turning.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

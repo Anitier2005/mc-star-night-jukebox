@@ -1,0 +1,68 @@
+:root {
+    --block-size: 200px;   /* 立方体每个面的基础尺寸 */
+    --cube-scale: 0.5;       /* 缩放比例，默认是1 */
+    --cube-translate: calc(var(--block-size) / 2); /* 根据基础尺寸自动调整translateZ值 */
+    --rotate-x: -25deg;    /* 上下旋转角度 */
+    --rotate-y: -90deg;    /* 左右旋转角度 */
+    --juke-top:url('/static/texture/jukebox_top.png');
+    --juke-side:url('/static/texture/jukebox_side.png');
+}
+
+/* 3D场景容器：设置透视效果 */
+.scene {
+    width: var(--block-size);           /* 场景宽度根据立方体大小调整 */
+    height: calc(var(--block-size) * 1.5);          /* 场景高度根据立方体大小调整 */
+    perspective: 800px;     /* 透视距离，值越小透视效果越强 */
+}
+
+/* 立方体容器：启用3D变换 */
+.cube {
+    width: 100%;            /* 继承父元素宽度 */
+    height: 100%;           /* 继承父元素高度 */
+    position: relative;     /* 相对定位，用于子元素绝对定位 */
+    transform-style: preserve-3d; /* 子元素保持3D位置 */
+    transform: scale(var(--cube-scale)) rotateX(var(--rotate-x)) rotateY(var(--rotate-y)); /* 初始旋转角度结合缩放 */
+    transition: transform 0.5s; /* 变换过渡效果 */
+}
+
+/* 立方体的每个面通用样式 */
+.face {
+    position: absolute;     /* 绝对定位，相对于.cube容器 */
+    width: var(--block-size);           /* 面的宽度 */
+    height: var(--block-size);          /* 面的高度 */
+    background-repeat: no-repeat;
+    background-size: cover;
+    image-rendering: pixelated;
+    background-image: var(--juke-side);
+}
+
+/* 上面：先绕X轴旋转90度，再沿Z轴正方向移动一半立方体边长 */
+.top {
+    transform: rotateX(90deg) translateZ(var(--cube-translate));
+    background-image: var(--juke-top);
+}
+
+/* 下面：先绕X轴旋转-90度，再沿Z轴正方向移动一半立方体边长 */
+.bottom {
+    transform: rotateX(-90deg) translateZ(var(--cube-translate));
+}
+
+/* 前面：沿Z轴正方向移动一半立方体边长（立方体边长的一半） */
+.front {
+    transform: translateZ(var(--cube-translate));
+}
+
+/* 后面：先绕Y轴旋转180度，再沿Z轴正方向移动一半立方体边长 */
+.back {
+    transform: rotateY(180deg) translateZ(var(--cube-translate));
+}
+
+/* 右面：先绕Y轴旋转90度，再沿Z轴正方向移动一半立方体边长 */
+.right {
+    transform: rotateY(90deg) translateZ(var(--cube-translate));
+}
+
+/* 左面：先绕Y轴旋转-90度，再沿Z轴正方向移动一半立方体边长 */
+.left {
+    transform: rotateY(-90deg) translateZ(var(--cube-translate));
+}
